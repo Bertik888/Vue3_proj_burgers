@@ -1,26 +1,43 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container"> 
+    1
+  </div>
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
   }
 }
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+@import '@/assets/css/variables.scss'; // почему через @, спросить еще раз
+
+* { 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
 }
+
+.container {
+  width: 100%;
+  max-width: 1440px;
+
+  margin-right: auto;
+  margin-left: auto;
+}
+
+// уточнить по шрифтам?
+@font-face {
+  font-family: 'Nunito', sans-serif;
+  src: url(@/assets/fonts/Nunito-VariableFont_wght.ttf) format('ttf');
+  font-display: swap;
+}
+
+
 </style>
