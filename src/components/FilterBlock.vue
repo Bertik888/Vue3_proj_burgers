@@ -1,7 +1,11 @@
 <template>
   <div class="filter-block">
 
-    <filter-item />
+    <filter-item
+      v-for="item in 7"
+      :key="item"
+      class="mr"
+    />
 
   </div>
 </template>
@@ -22,9 +26,12 @@ import FilterItem from './FilterItem.vue';
 <style lang="scss" scoped>
 @import '@/assets/css/variables.scss';
 .filter-block {
-  // border: solid 2px #000;
-  // border-radius: 3px;
+  display: flex;
+  align-items: center;
+}
 
+.mr {
+  margin-right: 8px;
 }
 
 </style>
