@@ -56,52 +56,43 @@ import BasketItem from './BasketItem.vue'
 </script>
 
 <style lang="scss">
+@import '@/assets/css/variables.scss';
 
 
 .basket {
   margin-top: 122px;
   display: flex;
   flex-direction: column;
-  border: solid 2px #000;
+  // border: solid 1px $black;
   border-radius: 18px;
   padding: 16px;
-  background: #fff;
-
+  background: $white;
+  font-family: $font-family-nunito;
+  color: $black;
 
   &__info {
     display: flex;
-    border-bottom: 1px solid #F2F2F3;
+    border-bottom: 1px solid $light-grey;
     justify-content: space-between;
     padding: 15px 0;
 
 
-    &_title {
-      margin-right: 145px;
-
-      font-family: 'Nunito';
-      font-style: normal;
+    &_title {      
       font-weight: 600;
       font-size: 24px;
       line-height: 100%;
       text-align: center;
-
-      color: #000;
     }
 
     &_counter {
-      font-family: 'Nunito';
-      font-style: normal;
       font-weight: 400;
       font-size: 12px;
       line-height: 16px;
-      text-align: center;
-
-      color: #000;
       
       width: 41px;
       height: 20px;
 
-      background: #F2F2F3;
+      background: $light-grey;
       border-radius: 6px;
 
       display: flex;
@@ -114,38 +105,29 @@ import BasketItem from './BasketItem.vue'
 
   &__total {
     display: flex;
-    border-bottom: 1px solid #F2F2F3;
     padding: 15px 10px;
     justify-content: space-between;
 
     &_title {
-      font-family: 'Nunito';
-      font-style: normal;
       font-weight: 400;
       font-size: 16px;
       line-height: 130%;
-      color: #000000;
     } 
   }
 
   &__button {
-    color: #FFF;
-    background: #FF7020;
-  }
-
-  
+    color: $white;
+    background: $orange;
+  }  
 
   &__delivery {
-    font-family: 'Nunito';
-    font-style: normal;
     font-weight: 400;
     font-size: 12px;
     line-height: 16px;
-
-    color: #000000;
+    
+    display: flex;
     align-items: center;
     text-align: center;
-    display: flex;
     cursor: pointer;
 
     &_icon {

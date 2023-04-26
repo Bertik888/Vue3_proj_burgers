@@ -59,16 +59,16 @@ import ProductsItem from './ProductsItem.vue'
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/css/variables.scss';
 .products {
   &__title {
     margin-top: 50px;
     margin-bottom: 24px;
-    font-family: 'Nunito';
-    font-style: normal;
+    $font-family-nunito: 'Nunito', sans-serif;    
     font-weight: 600;
     font-size: 40px;
     line-height: 120%;
-    color: #000;
+    color: $black;
   }
 }
 

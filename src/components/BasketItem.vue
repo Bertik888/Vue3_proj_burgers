@@ -3,7 +3,7 @@
   <div class="basket-item">
 
     <img 
-      src="@/assets/images/imagesBasket/Сырный.svg"
+      src="@/assets/images/imagesBasket/supercheez-basket.jpg"
       alt="Cырный"
       class="basket-item__image"
     >     
@@ -21,15 +21,20 @@
 
     </div> 
 
-    <div class="basket-item__counter">
-      - 1 +          
-    </div>
+    <ui-control-counter />
+
   </div>
 </template>
 
 <script>
+import UiControlCounter from '@/components/UiControlCounter.vue'
+
   export default {
-    name: 'BasketItem'
+    name: 'BasketItem',
+
+    components: {
+      UiControlCounter
+    }
   }
 </script>
 
@@ -38,45 +43,26 @@
 
 .basket-item {
   display: flex;
-  border-bottom: 1px solid #F2F2F3;
+  border-bottom: 1px solid $light-grey;
   padding: 15px 0;
   justify-content: space-between;
+  font-family: $font-family-nunito;
 
   &__image {
-    margin-right: 8px;
+    margin-right: 6px;
   }
 
   &__zakaz {
     flex-direction: column;
-    font-family: 'Nunito';
-    font-style: normal;
     font-weight: 400;
     font-size: 12px;
     line-height: 16px;
-
-    color: #000000;
+    color: $black;
+    margin-right: 30px;
   }
   
   &__weight {
     color: #B1B1B1;
-  }
-
-  &__counter {
-    display: flex;
-    justify-content: center;
-
-    margin-left: 20px;
-
-
-    width: 84px;
-    height: 40px;
-
-    background: #F2F2F3;
-    border-radius: 12px;
-
-    text-align: center;
-    align-items: center;
-    cursor: pointer;
   }
 }
 

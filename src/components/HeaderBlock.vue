@@ -15,7 +15,7 @@
         <img 
           src="@/assets/images/burger.svg" 
           alt="Бургер"
-          class="header-block__burger_img"
+          class="header-block__logo_img"
         >
         <div class="header-block__burger_title">
           <h1>Только самые</h1>
@@ -39,9 +39,10 @@
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/css/variables.scss';
 .header-block {
-  height: 466px;           // без него картинка становится полосой
-  
+  font-family: $font-family-nunito;
+  height: 466px;           // без него картинка становится полосой  
   // background-size: contain;
   // background-size: cover;
   background-image: url(@/assets/images/elipse.svg);
@@ -53,25 +54,21 @@
     justify-content: center;
     align-items: center;
     padding-top: 10px;
-  }
 
-  &__burger_img {
+    &_img {
     margin-right: 64px;
+    }
   }
 
   &__burger_title {
     flex-direction: column;
-    
-    font-family: 'Nunito';
-    font-style: normal;
   }
 
   &__burger_title h1 {
     font-weight: 800;
     font-size: 50px;
     line-height: 120%;
-
-    color: #FFFFFF;
+    color: $white;
   }
 
   &__burger_title p {
@@ -88,12 +85,9 @@
     font-size: 16px;
     line-height: 22px;
 
-    color: #FFFFFF;
+    color: $white;
     padding-top: 26px;   
-  }
-
-  
-
+  } 
 }
 
 </style>

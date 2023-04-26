@@ -51,7 +51,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '@/assets/css/variables.scss'; // почему через @, спросить еще раз
+@import '@/assets/css/variables.scss'; // @import через @, т.к css
 
 * { 
   margin: 0;
@@ -60,7 +60,8 @@ export default {
 }
 
 body {
-  font-family: 'Nunito', sans-serif;
+  font-family: $font-family-nunito;
+
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -106,14 +107,10 @@ body {
 
   margin-left: -15px;
   margin-right: -15px;
-
-
-  
   // border: solid 1px #000;
   // border-radius: 3px;
 
   & > * {
-
     flex-shrink: 0;
     width: 100%;
     max-width: 100%;
@@ -134,8 +131,7 @@ body {
 
 .col-6 {
   width: 50%;
-  flex: 0 0 auto;
-  margin-top: 52px;
+  flex: 0 0 auto; 
 }
 
 .col-9 {
@@ -151,7 +147,25 @@ body {
 // уточнить по шрифтам?
 @font-face {
   font-family: 'Nunito', sans-serif;
-  src: url(@/assets/fonts/Nunito-VariableFont_wght.ttf) format('ttf');
+  src: url(@/assets/fonts/Nunito-Regular.ttf) format('ttf');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito', sans-serif;
+  src: url(@/assets/fonts/Nunito-SemiBold.ttf) format('ttf');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito', sans-serif;
+  src: url(@/assets/fonts/Nunito-ExtraBold.ttf) format('ttf');
+  font-weight: 800;
+  font-style: normal;
   font-display: swap;
 }
 

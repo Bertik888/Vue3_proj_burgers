@@ -2,9 +2,9 @@
   <div class="filter-block">
 
     <filter-item
-      v-for="item in 7"
+      v-for="item in 9"
       :key="item"
-      class="mr"
+      class="mr mb"
     />
 
   </div>
@@ -26,12 +26,18 @@ import FilterItem from './FilterItem.vue';
 <style lang="scss" scoped>
 @import '@/assets/css/variables.scss';
 .filter-block {
-  display: flex;
+  display: flex;  
+  flex-wrap: wrap;
   align-items: center;
+  margin-top: 40px;
 }
 
 .mr {
   margin-right: 8px;
+}
+
+.mb {
+  margin-bottom: 8px;
 }
 
 </style>
