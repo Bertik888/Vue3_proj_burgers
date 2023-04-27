@@ -3,19 +3,22 @@
 
     <div class="products-item__image">
       <img 
-        src="@/assets/images/imagesProducts/meat.jpg" 
+        
+        src="@/assets/images/imagesProducts/meat.jpg"
+        
         alt="Мясная бомба">
     </div>
 
+    <!-- :src="`../assets/images/imagesProducts/${item.image}`" -->
 
     <div class="products-item__price">
-      689 P
+      {{ item.price }} Р
     </div>
     <div class="products-item__name">
-      Мясная бомба
+      {{ item.name }}
     </div>
     <div class="products-item__weight">
-      520г
+      {{ item.weight }} г
     </div>
 
     <button class="btn products-item__btn">
@@ -30,7 +33,13 @@
 
 <script>
   export default {
-    name: 'ProductsItem'
+    name: 'ProductsItem',
+
+    props: {
+      item: {
+        type: Object        
+      }
+    }
   }
 </script>
 

@@ -2,14 +2,14 @@
   <div class="header-block">
     <div class="container">
       <div class="header-block__logo">
-          <img 
-            src="@/assets/images/YourMeal.svg" 
-            alt="Логотип"
-          >
-          <img 
-            src="@/assets/images/icon-kitchen.svg" 
-            alt="Логотип"
-          >
+        <img 
+          src="@/assets/images/YourMeal.svg" 
+          alt="Логотип"
+        >
+        <img 
+          src="@/assets/images/icon-kitchen.svg" 
+          alt="Логотип"
+        >
       </div>
       <div class="header-block__logo">
         <img 

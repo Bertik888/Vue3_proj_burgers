@@ -61,8 +61,6 @@ export default {
 
 body {
   font-family: $font-family-nunito;
-
-
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: #f5f5f5;

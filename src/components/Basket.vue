@@ -11,10 +11,10 @@
     </div>
 
 
-    
     <basket-item 
-      v-for="item in 3"
-      :key="item"
+      v-for="item in products"
+      :key="item.id"
+      :item="item"
     />
 
     <div class="basket__total">
@@ -50,7 +50,18 @@ import BasketItem from './BasketItem.vue'
 
     components: {
       BasketItem
+    },
+
+    props: {
+      products: {
+        type: Object
+      },
+      item: {
+        type: Object
+      }
     }
+
+    
     
   }
 </script>
@@ -120,14 +131,15 @@ import BasketItem from './BasketItem.vue'
     background: $orange;
   }  
 
-  &__delivery {
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 16px;
-    
+  &__delivery {    
     display: flex;
     align-items: center;
     text-align: center;
+
+    margin-top: 12px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;    
     cursor: pointer;
 
     &_icon {

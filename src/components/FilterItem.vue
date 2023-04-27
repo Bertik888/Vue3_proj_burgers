@@ -5,13 +5,19 @@
       alt="Бургеры"
       class="filter-item__image"
     >
-    Бургеры
+      {{ filterProduct.name }}
   </div>
 </template>
 
 <script>
   export default {
-    name: 'FilterItem'
+    name: 'FilterItem',
+
+    props: {
+      filterProduct: {
+        type: Object
+      }
+    }
 
     
   }
@@ -21,7 +27,6 @@
 @import '@/assets/css/variables.scss';
 .filter-item {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;   
   font-family: $font-family-nunito;
   font-weight: 400;

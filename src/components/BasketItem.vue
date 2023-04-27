@@ -10,13 +10,13 @@
 
     <div class="basket-item__zakaz">
       <div class="basket-item__name">
-        Супер сырный
+        Супер сырный {{ item.name }}
       </div>
       <div class="basket-item__weight">
-        512г
+        512 {{ item.weight }} г
       </div>
       <div class="basket-item__price">
-        550 P
+        550  {{ item.price }} P
       </div>
 
     </div> 
@@ -34,6 +34,12 @@ import UiControlCounter from '@/components/UiControlCounter.vue'
 
     components: {
       UiControlCounter
+    }, 
+
+    props: {
+      item: {
+        type: Object
+      }
     }
   }
 </script>
