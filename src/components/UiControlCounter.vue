@@ -1,7 +1,21 @@
 <template>
-  <div class="ui-control-counter">
-    <div class="basket-item__counter">
-      - 1 +          
+  <div class="ui-control">
+    <div class="ui-control__counter">
+      <button
+        @click="$emit('modelValue: update', modelValue > 0 ? modelValue-- : 0)"
+        class="btn ui-control__btn"
+      >
+       -
+      </button>         
+
+      {{ modelValue }}
+
+      <button
+        @click="$emit('modelValue: update', modelValue++)"
+        class="btn ui-control__btn"
+      >
+       +
+      </button> 
     </div>
 
   </div>
@@ -9,15 +23,26 @@
 
 <script>
   export default {
-    name: 'UiControlCounter'
+    name: 'UiControlCounter',
+    props: {
+      modelValue: {
+        type: Number,
+        default: 0
+      }
+    }
     
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
 @import '@/assets/css/variables.scss';
 
-.basket-item {
+.ui-control { 
+  $font-family-nunito: 'Nunito', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: $black;
 
   &__counter {
     display: flex;

@@ -9,6 +9,7 @@
     >     
 
     <div class="basket-item__zakaz">
+      
       <div class="basket-item__name">
         Супер сырный {{ item.name }}
       </div>

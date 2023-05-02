@@ -12,7 +12,7 @@
 
 
     <basket-item 
-      v-for="item in products"
+      v-for="item in 3"
       :key="item.id"
       :item="item"
     />
@@ -52,17 +52,11 @@ import BasketItem from './BasketItem.vue'
       BasketItem
     },
 
-    props: {
-      products: {
-        type: Object
-      },
-      item: {
-        type: Object
+    data() {
+      return {
+        products: []
       }
-    }
-
-    
-    
+    }    
   }
 </script>
 

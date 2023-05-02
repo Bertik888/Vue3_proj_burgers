@@ -26,57 +26,48 @@ import FilterItem from './FilterItem.vue';
         filterProducts: [
           {
             name: 'Бургеры',
-            id: 7,
-            image: 'Бургеры.svg',
-            cat_id: 1
+            id: 1,
+            image: 'Бургеры.svg'
           },
           {
             name: 'Закуски',
-            id: 8,
-            image: 'Закуски.svg',
-            cat_id: 2
+            id: 2,
+            image: 'Закуски.svg'
           },
           {
             name: 'Хот-доги',
-            id: 9,
-            image: 'Хот-доги.svg',
-            cat_id: 3
+            id: 3,
+            image: 'Хот-доги.svg'
           },
           {
             name: 'Комбо',
-            id: 10,
-            image: 'Комбо.svg',
-            cat_id: 4
+            id: 4,
+            image: 'Комбо.svg'
           },
           {
             name: 'Шаурма',
-            id: 11,
+            id: 5,
             image: 'Шаурма.svg',
-            cat_id: 5
           },
           {
             name: 'Пицца',
-            id: 12,
-            image: 'Пицца.svg',
-            cat_id: 6
+            id: 6,
+            image: 'Пицца.svg'
           },
           {
             name: 'Вок',
-            id: 13,
-            image: 'Вок.svg',
-            cat_id: 7
+            id: 7,
+            image: 'Вок.svg'
           },
           {
             name: 'Десерты',
-            id: 14,
-            image: 'Десерты.svg',
-            cat_id: 8
+            id: 8,
+            image: 'Десерты.svg'
           },
           {
             name: 'Соусы',
-            id: 15,
-            image: 'Соусы.svg',
-            cat_id: 9
+            id: 9,
+            image: 'Соусы.svg'
           }
         ]
       }

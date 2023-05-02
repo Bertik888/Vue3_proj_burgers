@@ -2,10 +2,8 @@
   <div class="products-item">
 
     <div class="products-item__image">
-      <img 
-        
-        src="@/assets/images/imagesProducts/meat.jpg"
-        
+      <img         
+        src="@/assets/images/imagesProducts/meat.jpg"        
         alt="Мясная бомба">
     </div>
 
@@ -21,9 +19,21 @@
       {{ item.weight }} г
     </div>
 
-    <button class="btn products-item__btn">
-      Добавить
+    <button 
+        @click="isOpenCard = true"
+        class="btn products-item__btn">
+        Добавить
     </button>
+
+    <dialog-modal
+      :isOpen="isOpenCard"
+      @hide="isOpenCard = false"
+    >
+      <products-item-modal 
+        :item="item"
+      />
+    </dialog-modal>
+
 
   </div> 
 
@@ -32,8 +42,24 @@
 </template>
 
 <script>
+import DialogModal from './DialogModal'
+import ProductsItemModal from './ProductsItemModal'
+
+
+
   export default {
     name: 'ProductsItem',
+
+    components: {
+      DialogModal,
+      ProductsItemModal
+    },
+
+    data() {
+      return { 
+        isOpenCard: false
+      }
+    },
 
     props: {
       item: {
