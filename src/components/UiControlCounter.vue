@@ -2,7 +2,7 @@
   <div class="ui-control">
     <div class="ui-control__counter">
       <button
-        @click="$emit('modelValue: update', modelValue > 0 ? modelValue-- : 0)"
+        @click="$emit('update:modelValue', modelValue > minValue ? modelValue - 1 : minValue)"
         class="btn ui-control__btn"
       >
        -
@@ -11,7 +11,7 @@
       {{ modelValue }}
 
       <button
-        @click="$emit('modelValue: update', modelValue++)"
+        @click="$emit('update:modelValue', modelValue + 1)"
         class="btn ui-control__btn"
       >
        +
@@ -24,8 +24,14 @@
 <script>
   export default {
     name: 'UiControlCounter',
+    
     props: {
       modelValue: {
+        type: Number,
+        default: 0
+      },
+
+      minValue: {
         type: Number,
         default: 0
       }

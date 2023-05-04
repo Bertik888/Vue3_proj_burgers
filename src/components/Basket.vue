@@ -12,9 +12,11 @@
 
 
     <basket-item 
-      v-for="item in 3"
+      @changeCounter="$emit('changeCounter', $event)"
+      v-for="item in basketItems"
       :key="item.id"
       :item="item"
+
     />
 
     <div class="basket__total">
@@ -56,7 +58,21 @@ import BasketItem from './BasketItem.vue'
       return {
         products: []
       }
-    }    
+    },
+    
+    props: {
+      basketItems: {
+        type: Array,
+        default: []
+      }
+    },
+
+    // Ниже метод равносилен $emit, $event
+    // methods: {
+    //   changeCounter(data) {
+    //     this.$emit('changeCounter', data)
+    //   }
+    // }
   }
 </script>
 

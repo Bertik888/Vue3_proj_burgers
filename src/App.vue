@@ -13,17 +13,26 @@
     <div class="row">
 
       <div class="col-3">
-        <basket />
+        <basket 
+          @changeCounter="changeCounter"
+          :basketItems="basketItems"
+        />
       </div>
 
       <div class="col-9">
-        <products />
+        <products 
+          @addToBasket="addToBasket"
+        />
       </div>
 
     </div>  
   </div>
 
   <footer-block />
+
+  <app-debug 
+    :show="false"
+  />
 
 </template>
 
@@ -33,17 +42,61 @@ import FilterBlock from '@/components/FilterBlock.vue'
 import Basket from '@/components/Basket.vue'
 import Products from '@/components/Products.vue'
 import FooterBlock from '@/components/FooterBlock.vue'
+import AppDebug from '@/components/AppDebug.vue'
+
 
 
 export default {
   name: 'App',
+
   components: {
     HeaderBlock,
     FilterBlock,
     Basket,
     Products,
-    FooterBlock
-  }
+    FooterBlock,
+    AppDebug
+  },
+
+  data() {
+    return {
+      basketItems: []
+    }
+  },
+
+  methods: {
+    addToBasket(data) {
+      const existItems = this.basketItems.find((item) => {
+        return item.id === data.id
+      })
+
+      if (existItems) {
+        console.log(existItems.counter, data.counter)
+        
+        existItems.counter = existItems.counter + data.counter
+      } else {
+        this.basketItems.push(data)
+      }
+    },
+
+    changeCounter(item) {
+      if (item.counter === 0) {
+        this.removeItem(item.id)
+      } else {
+        const existItem = this.basketItems.find((el) => {
+          return el.id === item.id
+        })
+        existItem.counter = item.counter
+      }
+    },
+    
+    removeItem(id) {
+      const index = this.basketItems.findIndex((item) => {
+        return item.id === id
+      })
+        this.basketItems.splice(index, 1)
+    }
+  },
 }
 </script>
 

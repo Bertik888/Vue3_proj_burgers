@@ -17,14 +17,15 @@
         </div> 
 
         <!-- @addToBasket="" -->
-        <button 
-          
+        <button  
+          @click="addToBasket"         
           class="btn card__button">
             Добавить
         </button>       
       </div>
 
       <div class="col-7">
+
         <div class="card__description">
           {{ item.description }}
         </div> 
@@ -53,19 +54,20 @@
         <!-- Нужен ли тут див? div class="card__calories-->
         
         <div class="card__counter">
+
           <ui-control-counter
             v-model="counter"
+            :minValue="1"
           />  
+
           <div class="card__price">
             {{ item.price }}Р
           </div>
         </div>
 
-      </div>
-
-    </div>
-
-  </div>
+      </div> <!-- col-7 -->
+    </div><!-- row -->
+  </div><!-- card -->
 </template>
 
 <script>
@@ -79,12 +81,21 @@ import UiControlCounter from '@/components/UiControlCounter.vue'
     },
 
     data() {
-      counter: 0
+      return {
+        counter: 1
+      }
     },
 
     props: {
       item: {
         type: Object        
+      }
+    },
+
+    methods: {
+      addToBasket() {
+        this.$emit('addToBasket', {...this.item, counter: this.counter})
+        console.log('addToBasket', this.counter)
       }
     }
     

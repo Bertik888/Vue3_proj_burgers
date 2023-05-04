@@ -20,8 +20,8 @@
     </div>
 
     <button 
-        @click="isOpenCard = true"
-        class="btn products-item__btn">
+      @click="isOpenCard = true"
+      class="btn products-item__btn">
         Добавить
     </button>
 
@@ -31,6 +31,7 @@
     >
       <products-item-modal 
         :item="item"
+        @addToBasket="addToBasket"
       />
     </dialog-modal>
 
@@ -64,6 +65,15 @@ import ProductsItemModal from './ProductsItemModal'
     props: {
       item: {
         type: Object        
+      }
+    },
+
+    methods: {
+      addToBasket(data) {
+        this.$emit('addToBasket', data)
+        console.log(data)
+
+        this.isOpenCard = false
       }
     }
   }

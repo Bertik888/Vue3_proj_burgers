@@ -12,6 +12,8 @@
       >
         <products-item 
           :item="item" 
+          @addToBasket="addToBasket"
+          
         />
       </div>
 
@@ -62,7 +64,6 @@ import ProductsItem from './ProductsItem.vue'
             description: 'Супер наслаждение!',
             structure: ['колбаса', 'огурец', 'помидор'],
             calories: '430'
-
           },
           {
             name: 'Тяжелый удар',
@@ -230,6 +231,13 @@ import ProductsItem from './ProductsItem.vue'
             calories: '430'
           }
         ]
+      }
+    },
+
+    methods: {
+      addToBasket(data) {
+        this.$emit('addToBasket', data)
+        console.log(data)
       }
     }
   }

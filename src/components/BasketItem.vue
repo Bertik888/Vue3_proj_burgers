@@ -11,18 +11,21 @@
     <div class="basket-item__zakaz">
       
       <div class="basket-item__name">
-        Супер сырный {{ item.name }}
+         {{ item.name }}
       </div>
       <div class="basket-item__weight">
-        512 {{ item.weight }} г
+         {{ item.weight }} г
       </div>
       <div class="basket-item__price">
-        550  {{ item.price }} P
+         {{ item.price }} P
       </div>
 
     </div> 
 
-    <ui-control-counter />
+    <ui-control-counter 
+      :model-value="item.counter"
+      @update:modelValue="changeCounter"
+    />
 
   </div>
 </template>
@@ -40,6 +43,12 @@ import UiControlCounter from '@/components/UiControlCounter.vue'
     props: {
       item: {
         type: Object
+      }
+    },
+
+    methods: {
+      changeCounter(value) {
+        this.$emit('changeCounter', { counter: value, id: this.item.id })
       }
     }
   }
