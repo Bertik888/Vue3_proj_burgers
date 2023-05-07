@@ -2,10 +2,12 @@
   <div class="filter-block">
 
     <filter-item
-      v-for="filterProduct in filterProducts"
-      :key="filterProduct.id"
+      :currentFilterId="currentFilterId"
+      @changeFilter="$emit('changeFilter', $event)"
+      v-for="item in filters"
+      :key="item.id"
       class="mr mb"
-      :filterProduct="filterProduct"
+      :item="item"
     />
 
   </div>
@@ -21,57 +23,18 @@ import FilterItem from './FilterItem.vue';
       FilterItem
     },
 
-    data() {
-      return {
-        filterProducts: [
-          {
-            name: 'Бургеры',
-            id: 1,
-            image: 'Бургеры.svg'
-          },
-          {
-            name: 'Закуски',
-            id: 2,
-            image: 'Закуски.svg'
-          },
-          {
-            name: 'Хот-доги',
-            id: 3,
-            image: 'Хот-доги.svg'
-          },
-          {
-            name: 'Комбо',
-            id: 4,
-            image: 'Комбо.svg'
-          },
-          {
-            name: 'Шаурма',
-            id: 5,
-            image: 'Шаурма.svg',
-          },
-          {
-            name: 'Пицца',
-            id: 6,
-            image: 'Пицца.svg'
-          },
-          {
-            name: 'Вок',
-            id: 7,
-            image: 'Вок.svg'
-          },
-          {
-            name: 'Десерты',
-            id: 8,
-            image: 'Десерты.svg'
-          },
-          {
-            name: 'Соусы',
-            id: 9,
-            image: 'Соусы.svg'
-          }
-        ]
+    props: {
+      filters: {
+        type: Array,
+        default: []
+      },
+
+      currentFilterId: {
+        type: Number,
+        default: null
       }
     }
+    
     
   }
 </script>

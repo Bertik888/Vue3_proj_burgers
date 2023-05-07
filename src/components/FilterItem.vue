@@ -1,11 +1,14 @@
 <template>
-  <div class="filter-item food-burgers">
+  <div 
+    :class="{ 'active': isActive }" 
+    @click="$emit('changeFilter', item)"
+    class="filter-item">
     <img 
-      src="@/assets/images/icons/Бургеры.svg"
-      alt="Бургеры"
+      :src="getImage(item.image)"
+      :alt="item.name"
       class="filter-item__image"
     >
-      {{ filterProduct.name }}
+      {{ item.name }}
   </div>
 </template>
 
@@ -14,8 +17,25 @@
     name: 'FilterItem',
 
     props: {
-      filterProduct: {
+      item: {
         type: Object
+      },
+
+      currentFilterId: {
+        type: Number,
+        default: null
+      }
+    },
+
+    computed: {
+      isActive () {
+        return this.currentFilterId === this.item.id // возврат true или false, если true, тогда присваивается класс active 
+      }
+    },
+
+    methods: {
+      getImage(img) {
+        return require(`@/assets/images/icons/${img}`)
       }
     }
 
@@ -39,8 +59,8 @@
   background: $white;
 }
 
-.food-burgers {
-  // background: $yellow;
+.active {
+  background: $yellow;
 
 }
 

@@ -6,34 +6,40 @@
       </div>
 
       <div class="basket__info_counter">
-        4
+        {{ counter }}
       </div>        
     </div>
 
+    <template v-if="basketItems.length">
+    
+      <basket-item 
+        @changeCounter="$emit('changeCounter', $event)"
+        v-for="item in basketItems"
+        :key="item.id"
+        :item="item"
+      />
 
-    <basket-item 
-      @changeCounter="$emit('changeCounter', $event)"
-      v-for="item in basketItems"
-      :key="item.id"
-      :item="item"
+      <div class="basket__total">
+        <div class="basket__total_title">
+          Итого:
+        </div>
 
-    />
-
-    <div class="basket__total">
-      <div class="basket__total_title">
-        Итого
+        <div class="basket__total_price">
+          {{ price }} P
+        </div>
       </div>
 
-      <div class="basket__total_price">
-        1279 P
-      </div>
-    </div>
+      <button class="btn basket__button">
+        Оформить заказ
+      </button>
 
-    <button class="btn basket__button">
-      Оформить заказ
-    </button>
+      <products-item-modal /> 
+      <!-- is show true  -->
+      <!-- внутрь модалки прокинуть компонент с доставкой, сверстать -->
 
-      <div class="basket__delivery">
+      <div
+        v-if="priceProducts >= 1000" 
+        class="basket__delivery">
         <img 
           src="@/assets/images/icons/Доставка.svg" 
           alt="Доставка"
@@ -41,6 +47,11 @@
         >
           Бесплатная доставка
       </div>
+    </template>
+
+    <template v-else>
+      Тут пока пусто :(
+    </template>
 
   </div>
 </template>
@@ -66,6 +77,30 @@ import BasketItem from './BasketItem.vue'
         default: []
       }
     },
+
+    computed: {
+      priceProducts() {
+        // let acc = 0
+        // this.basketItems.forEach((item) => {     //МЕТОД forEach
+        //   acc += item.price * item.counter
+        // })
+        // return acc
+        
+        return this.basketItems.reduce((acc, item) => {
+          return acc += item.price * item.counter
+        }, 0)
+      },
+
+      price() {
+        return this.priceProducts >= 1000 ? this.priceProducts : this.priceProducts + 300
+      },
+
+      counter() {
+        return this.basketItems.reduce((acc, item) => {
+          return acc += item.counter
+        }, 0)
+      }
+    }
 
     // Ниже метод равносилен $emit, $event
     // methods: {
@@ -149,8 +184,7 @@ import BasketItem from './BasketItem.vue'
     margin-top: 12px;
     font-weight: 400;
     font-size: 12px;
-    line-height: 16px;    
-    cursor: pointer;
+    line-height: 16px;   
 
     &_icon {
      margin-right: 8px;
