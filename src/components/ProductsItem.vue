@@ -3,11 +3,9 @@
 
     <div class="products-item__image">
       <img         
-        src="@/assets/images/imagesProducts/meat.jpg"        
-        alt="Мясная бомба">
+        :src="require(`@/assets/images/imagesProducts/${item.image}`)"        
+        :alt="item.name">
     </div>
-
-    <!-- :src="`../assets/images/imagesProducts/${item.image}`" -->
 
     <div class="products-item__price">
       {{ item.price }} Р

@@ -29,7 +29,8 @@
 
     computed: {
       isActive () {
-        return this.currentFilterId === this.item.id // возврат true или false, если true, тогда присваивается класс active 
+        return this.currentFilterId === this.item.id 
+        // возврат true или false, если true, тогда присваивается класс active 
       }
     },
 

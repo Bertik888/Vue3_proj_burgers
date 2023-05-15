@@ -15,8 +15,7 @@
             alt="Мясная бомба"
           >  
         </div> 
-
-        <!-- @addToBasket="" -->
+        
         <button  
           @click="addToBasket"         
           class="btn card__button">

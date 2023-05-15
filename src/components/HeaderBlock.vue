@@ -1,6 +1,7 @@
 <template>
   <div class="header-block">
     <div class="container">
+
       <div class="header-block__logo">
         <img 
           src="@/assets/images/YourMeal.svg" 
@@ -20,16 +21,12 @@
         <div class="header-block__burger_title">
           <h1>Только самые</h1>
           <p>сочные бургеры!</p>
-          <h2>Бесплатная доставка от 599Р</h2>
+          <h2>Бесплатная доставка от 1000 Р</h2>
         </div>
       </div>
 
-
-      
-
-    </div>
-
-  </div>
+    </div> <!-- container -->
+  </div> <!-- header-block -->
 </template>
 
 <script>

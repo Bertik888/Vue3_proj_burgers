@@ -3,8 +3,8 @@
   <div class="basket-item">
 
     <img 
-      src="@/assets/images/imagesBasket/supercheez-basket.jpg"
-      alt="Cырный"
+      :src="require(`@/assets/images/imagesProducts/${item.image}`)"  
+      :alt="item.name"
       class="basket-item__image"
     >     
 
@@ -66,6 +66,9 @@ import UiControlCounter from '@/components/UiControlCounter.vue'
 
   &__image {
     margin-right: 6px;
+    max-width: 64px;
+    max-height: 52px;
+    width: 100%;
   }
 
   &__zakaz {

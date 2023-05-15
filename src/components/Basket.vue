@@ -29,11 +29,24 @@
         </div>
       </div>
 
-      <button class="btn basket__button">
+      <button 
+        @click="isOpenDelivery = true"
+        class="btn basket__button"
+      >
         Оформить заказ
       </button>
 
-      <products-item-modal /> 
+      <dialog-modal
+        :isOpen="isOpenDelivery"
+        @hide="isOpenDelivery = false"
+      >
+      
+        <delivery-modal
+
+        />
+      </dialog-modal>
+
+      <!-- <products-item-modal />  -->
       <!-- is show true  -->
       <!-- внутрь модалки прокинуть компонент с доставкой, сверстать -->
 
@@ -57,17 +70,23 @@
 </template>
 
 <script>
+import DeliveryModal from './DeliveryModal.vue'
+import DialogModal from './DialogModal'
 import BasketItem from './BasketItem.vue'
+
   export default {
     name: 'Basket',
 
     components: {
-      BasketItem
+      BasketItem,
+      DialogModal,
+      DeliveryModal
     },
 
     data() {
       return {
-        products: []
+        products: [],
+        isOpenDelivery: false
       }
     },
     
@@ -131,7 +150,7 @@ import BasketItem from './BasketItem.vue'
     border-bottom: 1px solid $light-grey;
     justify-content: space-between;
     padding: 15px 0;
-
+    align-items: center;
 
     &_title {      
       font-weight: 600;

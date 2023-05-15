@@ -30,7 +30,7 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .overlay {
   position: fixed;
   background: rgba(0, 0, 0, 0.8); 

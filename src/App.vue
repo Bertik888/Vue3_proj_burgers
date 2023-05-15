@@ -40,9 +40,16 @@
     :show="false"
   />
 
+  <ui-loader 
+    :isShow="isLoad"
+  />
+
 </template>
 
 <script>
+import { getProducts, getFilters } from '@/api/api'
+
+import UiLoader from '@/components/UiLoader.vue'
 import HeaderBlock from '@/components/HeaderBlock.vue'
 import FilterBlock from '@/components/FilterBlock.vue'
 import Basket from '@/components/Basket.vue'
@@ -52,10 +59,12 @@ import AppDebug from '@/components/AppDebug.vue'
 
 
 
+
 export default {
   name: 'App',
 
   components: {
+    UiLoader,
     HeaderBlock,
     FilterBlock,
     Basket,
@@ -70,254 +79,11 @@ export default {
 
       basketItems: [],
 
-      products: [
-        {
-          name: 'Мясная бомба',
-          price: 689,
-          weight: 520,
-          id: 1,
-          image: 'meat.jpg',
-          cat_id: 1,
-          description: 'Супер мясное наслаждение! Большая рубленая котлета из свежего говяжего мяса покорит вас своей сочностью, а хрустящие листья салата добавят свежести.',
-          structure: ['Пшеничная булочка', 'Котлета из говядины', 'Красный лук', 'Листья салата', 'Соус горчичный'],
-          calories: '430'
-        },
-        {
-          name: 'Супер сырный',
-          price: 550,
-          weight: 512,
-          id: 2,
-          image: 'cheez.jpg',
-          cat_id: 1,
-          description: 'Супер наслаждение!',
-          structure: ['колбаса', 'огурец', 'помидор'],
-          calories: '430'
-        },
-        {
-          name: 'Сытный',
-          price: 639,
-          weight: 580,
-          id: 3,
-          image: 'sitnay.jpg',
-          cat_id: 1,
-          description: 'Супер наслаждение!',
-          structure: ['колбаса', 'огурец', 'помидор'],
-          calories: '430'
-        },
-        {
-          name: 'Тяжелый удар',
-          price: 480,
-          weight: 470,
-          id: 4,
-          image: 'hard.jpg',
-          cat_id: 1,
-          description: 'Супер наслаждение!',
-          structure: ['колбаса', 'огурец', 'помидор'],
-          calories: '430'
-        },
-        {
-          name: 'Вечная классика',
-          price: 450,
-          weight: 450,
-          id: 5,
-          image: 'classic.jpg',
-          cat_id: 1,
-          description: 'Супер наслаждение!',
-          structure: ['колбаса', 'огурец', 'помидор'],
-          calories: '430'
-        },
-        {
-          name: 'Итальянский',
-          price: 560,
-          weight: 510,
-          id: 6,
-          image: 'italiano.jpg',
-          cat_id: 1,
-          description: 'Супер наслаждение!',
-          structure: ['колбаса', 'огурец', 'помидор'],
-          calories: '430'
-        },
-        {
-          name: 'Начос',
-          price: 250,
-          weight: 220,
-          id: 7,
-          image: 'nachos.jpg',
-          cat_id: 2,
-          description: 'Супер наслаждение!',
-          structure: ['колбаса', 'огурец', 'помидор'],
-          calories: '430'
-        },
-        {
-          name: 'Картошка фри',
-          price: 245,
-          weight: 180,
-          id: 8,
-          image: 'free.jpg',
-          cat_id: 2,
-          description: 'Супер  наслаждение!',
-          structure: ['колбаса', 'огурец', 'помидор'],
-          calories: '430'
-        },
-        {
-          name: 'Луковые кольца',
-          price: 230,
-          weight: 160,
-          id: 9,
-          image: 'rings.jpg',
-          cat_id: 2,
-          description: 'Супер  наслаждение!',
-          structure: ['колбаса', 'огурец', 'помидор'],
-          calories: '430'
-        },
-        {
-          name: 'Домашний хот-дог',
-          price: 290,
-          weight: 250,
-          id: 10,
-          image: 'home-dog.jpg',
-          cat_id: 3,
-          description: 'Супер  наслаждение!',
-          structure: ['колбаса', 'огурец', 'помидор'],
-          calories: '430'
-        },
-        {
-          name: 'Жгучий хот-дог',
-          price: 239,
-          weight: 245,
-          id: 11,
-          image: 'spice-dog.jpg',
-          cat_id: 3,
-          description: 'Супер  наслаждение!',
-          structure: ['колбаса', 'огурец', 'помидор'],
-          calories: '430'
-        },
-        {
-          name: 'Классический хот-дог',
-          price: 220,
-          weight: 215,
-          id: 12,
-          image: 'classic-dog.jpg',
-          cat_id: 3,
-          description: 'Супер  наслаждение!',
-          structure: ['колбаса', 'огурец', 'помидор'],
-          calories: '430'
-        },
-        {
-          name: 'Комбо',
-          price: 220,
-          weight: 215,
-          id: 13,
-          image: 'classic-dog.jpg',
-          cat_id: 4,
-          description: 'Супер  наслаждение!',
-          structure: ['колбаса', 'огурец', 'помидор'],
-          calories: '430'
-        },
-        {
-          name: 'Шаурма',
-          price: 220,
-          weight: 215,
-          id: 14,
-          image: 'classic-dog.jpg',
-          cat_id: 5,
-          description: 'Супер  наслаждение!',
-          structure: ['колбаса', 'огурец', 'помидор'],
-          calories: '430'
-        },
-        {
-          name: 'Пицца',
-          price: 220,
-          weight: 215,
-          id: 15,
-          image: 'classic-dog.jpg',
-          cat_id: 6,
-          description: 'Супер  наслаждение!',
-          structure: ['колбаса', 'огурец', 'помидор'],
-          calories: '430'
-        },
-        {
-          name: 'Вок',
-          price: 220,
-          weight: 215,
-          id: 16,
-          image: 'classic-dog.jpg',
-          cat_id: 7,
-          description: 'Супер  наслаждение!',
-          structure: ['колбаса', 'огурец', 'помидор'],
-          calories: '430'
-        },
-        {
-          name: 'Десерты',
-          price: 220,
-          weight: 215,
-          id: 17,
-          image: 'classic-dog.jpg',
-          cat_id: 8,
-          description: 'Супер  наслаждение!',
-          structure: ['колбаса', 'огурец', 'помидор'],
-          calories: '430'
-        },
-        {
-          name: 'Соусы',
-          price: 220,
-          weight: 215,
-          id: 18,
-          image: 'classic-dog.jpg',
-          cat_id: 9,
-          description: 'Супер  наслаждение!',
-          structure: ['колбаса', 'огурец', 'помидор'],
-          calories: '430'
-        }
-      ],
+      products: [],
 
-      filters: [
-        {
-          name: 'Бургеры',
-          id: 1,
-          image: 'Бургеры.svg'
-        },
-        {
-          name: 'Закуски',
-          id: 2,
-          image: 'Закуски.svg'
-        },
-        {
-          name: 'Хот-доги',
-          id: 3,
-          image: 'Хот-доги.svg'
-        },
-        {
-          name: 'Комбо',
-          id: 4,
-          image: 'Комбо.svg'
-        },
-        {
-          name: 'Шаурма',
-          id: 5,
-          image: 'Шаурма.svg',
-        },
-        {
-          name: 'Пицца',
-          id: 6,
-          image: 'Пицца.svg'
-        },
-        {
-          name: 'Вок',
-          id: 7,
-          image: 'Вок.svg'
-        },
-        {
-          name: 'Десерты',
-          id: 8,
-          image: 'Десерты.svg'
-        },
-        {
-          name: 'Соусы',
-          id: 9,
-          image: 'Соусы.svg'
-        }
-      ]
+      filters: [],
+
+      isLoad: false
     }
   },
 
@@ -381,8 +147,29 @@ export default {
       } else {
         this.currentFilter = item
       }
+    },
+
+    async getProducts() {
+      return getProducts().then((result) => {
+        this.products = result
+      }) 
+    },
+
+    async getFilters() {
+      return getFilters().then((result) => {
+        this.filters = result
+      }) 
     }
   },
+
+  async mounted() {
+    this.isLoad = true
+
+    Promise.all([this.getProducts(), this.getFilters()])
+      .finally(() => { 
+        this.isLoad = false
+      }) 
+  }
 }
 </script>
 
@@ -429,9 +216,6 @@ body {
   padding-left: $gutter-x;  
   margin-right: auto;
   margin-left: auto;
-
-  // border: solid 1px #000;
-  // border-radius: 3px;
 }
 
 
@@ -441,8 +225,6 @@ body {
 
   margin-left: -15px;
   margin-right: -15px;
-  // border: solid 1px #000;
-  // border-radius: 3px;
 
   & > * {
     flex-shrink: 0;
@@ -549,20 +331,18 @@ body {
   width: 100%;
 }
 
-// col-12 = 12/1 = 12      100%                 col-12 = 12/12*100%=100%
-// col-6 = 12/2 = 6        100% / 2 = 50%       col-6 =  6/12*100%=50% 
-// col-4 = 12/3 = 4        100% / 3 = 33.3%     col-4 = 4/12*100%=33.3% 
-// col-3 = 12/4 = 3        100% / 4 = 25%       col-3 = 3/12*100%=25%
-// col-2.4 = 12/5 = 2.4    100% / 5 = 20%       col-5 = 5/12*100%=41.6%
-
-// col-2 = 12/6 = 2        100% / 6 = 16.6%     col-2 = 2/12*100%=16.6%
-
-// col-1.7 = 12/7 = 1.7    100% / 7 = 14.3%     col-7 = 7/12*100%=58.3%
-// col-1.5 = 12/8 = 1.5    100% / 8 = 12.5%     col-8 = 8/12*100%=66.6%
-// col-1.3 = 12/9 = 1.3    100% / 9 = 11.1%     col-9 = 9/12*100%=75%
-// col-1.2 = 12/10 = 1.2   100% / 10 = 10%      col-10 = 10/12*100%=83.3% 
-// col-1.1 = 12/11 = 1.1   100% / 11 = 9.1%     col-11 = 11/12*100%=91.6%
-// col-1 = 12/12 = 1       100% / 12 = 8.3%     col-1 = 1/12*100%=8.3%
+// col-12 = 12/12*100%=100%
+// col-11 = 11/12*100%=91.6%
+// col-10 = 10/12*100%=83.3% 
+// col-9 = 9/12*100%=75%
+// col-8 = 8/12*100%=66.6%
+// col-7 = 7/12*100%=58.3%
+// col-6 =  6/12*100%=50% 
+// col-5 = 5/12*100%=41.6%
+// col-4 = 4/12*100%=33.3% 
+// col-3 = 3/12*100%=25%
+// col-2 = 2/12*100%=16.6%
+// col-1 = 1/12*100%=8.3%
 
 
 
